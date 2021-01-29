@@ -11,7 +11,27 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix
+
+    /**
+     * SITE
+     */
+
+    .styles([
+        'resources/views/site/assets/css/reset.css',
+        'resources/views/site/assets/css/color.css',
+        'resources/views/site/assets/css/main.css'
+    ], 'public/site/assets/css/style.css')
+    
+    /**
+     * DASHBOARD
+     */
+
+    .sass('resources/views/dashboard/assets/scss/bootstrap.scss',
+        'public/dashboard/assets/css/bootstrap.css')
+
+    .scripts('node_modules/jquery/dist/jquery.js',
+        'public/dashboard/assets/js/jquery.js')
+
+    .scripts('node_modules/bootstrap/dist/js/bootstrap.bundle.js',
+        'public/dashboard/assets/js/bootstrap.js');
