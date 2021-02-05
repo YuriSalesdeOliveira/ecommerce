@@ -15,7 +15,7 @@
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ route('dashboard.home') }}">Ecommerce</a>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-                <a class="nav-link" href="{{-- route('dashboard.logout') --}}">Sign out</a>
+                <a class="nav-link" href="{{ route('dashboard.logout') }}">Sign out</a>
             </li>
         </ul>
     </nav>

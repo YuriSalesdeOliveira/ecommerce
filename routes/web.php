@@ -35,6 +35,8 @@ Route::group(['prefix' => 'painel-de-controle'], function () {
 
     Route::group(['middleware' => CheckLogin::class], function () {
 
+        Route::get('/sair', [DashboardController::class, 'logout'])->name('dashboard.logout');
+
         Route::get('/', [DashboardController::class, 'home'])->name('dashboard.home');
         Route::get('/inicio', [DashboardController::class, 'home'])->name('dashboard.home');
 
