@@ -30,6 +30,9 @@ mix
     .sass('resources/views/dashboard/assets/scss/bootstrap.scss',
         'public/dashboard/assets/css/bootstrap.css')
 
+    .sass('resources/views/dashboard/assets/scss/login.scss',
+    'public/dashboard/assets/css/login.css')
+
     .scripts('node_modules/jquery/dist/jquery.js',
         'public/dashboard/assets/js/jquery.js')
 

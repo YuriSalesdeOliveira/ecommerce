@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Middleware\CheckLogin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\DashboardAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +28,16 @@ Route::get('/inicio', [SiteController::class, 'home'])->name('site.home');
  * Dashboard
  */
 
-Route::prefix('painel-de-controle')->group(function () {
+Route::group(['prefix' => 'painel-de-controle'], function () {
 
-    Route::get('/', [DashboardController::class, 'home'])->name('dashboard.home');
-    Route::get('/inicio', [DashboardController::class, 'home'])->name('dashboard.home');
+    Route::get('/entrar', [DashboardController::class, 'login'])->name('dashboard.login');
+    Route::post('/entrar', [DashboardAuthController::class, 'login'])->name('dashboard.auth.login');
+
+    Route::group(['middleware' => CheckLogin::class], function () {
+
+        Route::get('/', [DashboardController::class, 'home'])->name('dashboard.home');
+        Route::get('/inicio', [DashboardController::class, 'home'])->name('dashboard.home');
+
+    });
 
 });
