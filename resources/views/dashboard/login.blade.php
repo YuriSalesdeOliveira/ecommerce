@@ -23,6 +23,14 @@
 
             <h1 class="h3 mb-3 font-weight-normal">Informe os dados para acessar</h1>
 
+            @error('login-error')
+                    
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+
+            @enderror
+
             <label for="email" class="sr-only">E-mail</label>
             <input type="email" name="email" class="form-control" placeholder="Endereço de e-mail"
                 value="{{ old('email') }}" autofocus>
